@@ -1,0 +1,145 @@
+<script>
+alert("Bienvenido a la tienda");
+var bandera = false
+var res = [];
+
+while (bandera == false ){
+    var accion = parseInt(prompt("Que desea hacer?: \n1.- Registrar producto\n2.- Agregar producto al carrito\n3.- Salir" ));
+        switch(accion){
+        case 1:
+            resgistrarProductos();
+            bandera = false
+        break;
+        case 2:
+            carritos(res);
+            bandera = false
+        break;
+        case 3:
+            alert("Gracias")
+            bandera = true
+        break;
+        default:
+            alert("Opcion no valida");
+        break;
+        }
+}
+
+
+function resgistrarProductos(){
+    var cantidad = parseInt(prompt("Ingrese la cantidad de productos que deseas registrar"));
+ 
+
+
+    for (let x = 0; x < cantidad; x++) {
+…
+[7:45 p. m., 27/10/2021] Eddy Upt: alert("Bienvenido a la tienda");
+var bandera = false
+var res = [];
+
+while (bandera == false ){
+    var accion = parseInt(prompt("Que desea hacer?: \n1.- Registrar producto\n2.- Agregar producto al carrito\n3.- Salir" ));
+        switch(accion){
+        case 1:
+            resgistrarProductos();
+            bandera = false
+        break;
+        case 2:
+            carritos(res);
+            bandera = false
+        break;
+        case 3:
+            alert("Gracias")
+            bandera = true
+        break;
+        default:
+            alert("Opcion no valida");
+        break;
+        }
+}
+
+
+function resgistrarProductos(){
+    var cantidad = parseInt(prompt("Ingrese la cantidad de productos que deseas registrar"));
+ 
+
+
+    for (let x = 0; x < cantidad; x++) {
+        var producto = {
+            nombre: prompt("Ingresa el nombre del producto que deseas registrar"),
+            precio: parseFloat(prompt("Ingresa el precio del producto")),
+            cantidad: parseInt(prompt("Ingresa la cantidad de productos que deseas registrar"))
+        }
+        res.push(producto);
+    }
+    console.log(`Tienda: `, res)
+    bandera = true
+}
+
+////////////////////////////////////////////////////////////////////////////////productos al carrito
+
+function carritos(res){
+    var bandera2 = false
+    while(bandera2 == false){
+        var cuantos = parseInt(prompt("Cuantos productos deseas agregar al carrito?"))
+    var resultado = []
+    for(let i = 0 ; i < cuantos; i++) {
+        var pro = prompt("Que productos deseas agregar al carrito")
+            for (let g = 0 ; g < res.length; g++){
+                if (pro.toLowerCase() == res[g].nombre.toLowerCase()){
+                    bandera1 = true
+                var cant = parseInt(prompt("Cuantos deseas agregar?"))
+                if(cant <= res[g].cantidad){
+                    let suma = 0;
+                    suma = cant * res[g].precio;
+                    var producto = {
+                        nombre: res[g].nombre,
+                        unidades: cant,
+                        precioTotal: suma   
+                    }
+                    alert("Producto registrado exitosamente")
+                    resultado.push(producto)
+                
+                }else{
+                    alert("No hay suficientes productos en stock")
+                }
+            }
+        }
+    }
+    console.log(resultado)
+
+
+    //Cantidad total
+
+    var sumaT = 0
+    for (let i = 0; i < resultado.length; i++) {
+        sumaT += resultado[i].precioTotal 
+    }
+    console.log("Este es el total a pagar : " + sumaT)
+    alert("Este es el total a pagar : " + sumaT)
+
+
+    //resta en estock
+    var resta = 0
+    for (let x = 0; x < resultado.length; x++) {
+        for(let y=0; y < res.length; y++ ){
+            if (res[y].nombre == resultado[x].nombre) {
+                resta = res[y].cantidad - resultado[x].unidades
+                res[y].cantidad = resta
+            
+            }
+        }
+    }
+    var x = prompt("Quieres realizar otra compra?")
+    if (x.toLowerCase() == "si") {
+        bandera2 = false
+    }
+    else{
+        bandera2 = true
+    }
+}
+    bandera = true
+
+}
+ }
+} 
+</script>
